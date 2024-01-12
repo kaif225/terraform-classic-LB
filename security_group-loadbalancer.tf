@@ -8,5 +8,13 @@ module "load-balancer-sg" {
   egress_rules        = ["all-all"]
 
   tags = local.common_tags
+ ingress_with_cidr_block = [
+    {
+      from_port   = 81
+      to_port     = 81
+      protocol    = tcp
+      cidr_blocks = ["0.0.0.0/0"]
+    },
+  ]
 }
 
